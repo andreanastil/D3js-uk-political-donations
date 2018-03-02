@@ -112,6 +112,18 @@ function start() {
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
+		var paragraphContent = "";
+
+		$("html").find('p').each(function(){
+
+		var text = $(this).text().split(' ');//
+		for( var i = 0, len = text.length; i<len; i++ ) {
+		text[i] = '<span onmouseover=(this.style.fontSize="xx-large") onmouseout=(this.style.fontSize="initial") >'+text[i]+'</span>';
+		}
+
+		paragraphContent = text.join(' ');
+		$(this).html(paragraphContent);
+		});
 }
 
 function total() {
