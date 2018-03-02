@@ -351,6 +351,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
+	this.style.cursor="hand";
 	
 	}
 
@@ -362,6 +363,8 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+		this.style.cursor="default";
+
 		}
 
 $(document).ready(function() {
