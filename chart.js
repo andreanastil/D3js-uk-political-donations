@@ -364,7 +364,7 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	this.style.cursor="hand";
-	
+	responsiveVoice.speak(donor + ' £' + amount);
 	}
 
 function mouseout() {
@@ -376,7 +376,7 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		this.style.cursor="default";
-
+		responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
