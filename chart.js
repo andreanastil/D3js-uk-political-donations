@@ -214,6 +214,12 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
+function amounts(e) {
+	node.each(moveToAmounts(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -278,6 +284,31 @@ function moveToFunds(alpha) {
 			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+	
+}
+
+function moveToAmounts(alpha) {
+	return function(d) {
+		var centreY = svgCentre.y;
+		if (d.value <= 25001) {
+				centreX = svgCentre.x + 500;
+			} else if (d.value <= 50001) {
+				centreX = svgCentre.x + 400;
+			} else if (d.value <= 100001) {
+				centreX = svgCentre.x + 300;
+			} else  if (d.value <= 500001) {
+				centreX = svgCentre.x + 200;
+			} else  if (d.value <= 1000001) {
+				centreX = svgCentre.x + 100;
+			} else  if (d.value <= maxVal) {
+				centreX = svgCentre.x ;
+			} else {
+				centreX = svgCentre.x; // εάν το ποσό υπερβαίνει το maxVal πάλι θα μπει μαζί με τα μεγαλύτερα
+			}
+		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
