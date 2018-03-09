@@ -87,7 +87,7 @@ function transition(name) {
 		$("#view-donation-amount").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		
-		return amountsGroup();
+		//return amountsGroup();
 	}
 	}
 
@@ -173,6 +173,15 @@ function fundsType() {
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", types)
 		.start();
+}
+
+function amountsGroup() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", amounts)
+		.start()
+		.colourByParty();
 }
 
 function parties(e) {
