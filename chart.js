@@ -89,7 +89,7 @@ function transition(name) {
 		
 		//return amountsGroup();
 	}
-	}
+}
 
 function click(d) {
   var donor = d.donor;
