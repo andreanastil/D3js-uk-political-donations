@@ -48,7 +48,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-donation-amount").fadeOut(250);
+		$("#view-donation-amount").fadeOut(1000);
 		return total();
 		//location.reload();
 	}
@@ -86,7 +86,6 @@ function transition(name) {
 		$("#view-source-type").fadeOut(250);
 		$("#view-donation-amount").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
-		
 		return amountsGroup();
 	
 }
