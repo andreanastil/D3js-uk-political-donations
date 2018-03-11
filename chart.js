@@ -87,7 +87,7 @@ function transition(name) {
 		$("#view-donation-amount").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		
-		//return amountsGroup();
+		return amountsGroup();
 	}
 }
 
