@@ -103,14 +103,16 @@ li {
 }
 
 /*Amounts*/
-#amounts-title {
-    width: 50%
+#amount-title {
+    position: absolute; 
+    top:25%;
+    left: 35%;
 }
 
 #first {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 230px;
     width: 93px;
 }
@@ -118,7 +120,7 @@ li {
 #second {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 344px;
     width: 93px;
 }
@@ -126,7 +128,7 @@ li {
 #third {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 465px;
     width: 93px;
 }
@@ -134,7 +136,7 @@ li {
 #fourth {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 599px;
     width: 93px;
 }
@@ -142,7 +144,7 @@ li {
 #fifth {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 705px;
     width: 93px;
 }
@@ -150,7 +152,7 @@ li {
 #sixth {
     font-weight: bold;
     position: absolute;
-    top: 240px;
+    top: 300px;
     left: 815px;
     width: 93px;
 }
