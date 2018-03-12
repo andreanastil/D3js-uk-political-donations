@@ -104,8 +104,7 @@ li {
 
 /*Amounts*/
 #amounts-title {
-    position: absolute;
-    left: 200px;
+    width: 50%
 }
 
 #first {
