@@ -31,7 +31,6 @@ li {
 }
 /* Sidebar */
 #sidebar {
-    position:fixed;
     left: 1100px;
     width: 336px;
 }
