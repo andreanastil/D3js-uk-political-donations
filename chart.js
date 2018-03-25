@@ -424,7 +424,7 @@ function mouseover(d, i) {
 	elem.setAttribute("height", "42");
 	elem.setAttribute("width", "42");
 	
-	document.getElementById("sidebar").appendChild("elem");
+	document.getElementById("sidebar").appendChild(elem);
 	}
 
 function mouseout() {
