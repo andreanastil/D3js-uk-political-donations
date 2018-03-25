@@ -419,7 +419,8 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image
-	if (imageFile.onload!=404){
+	try{
+	imageFile.onload();
     	var elem = document.createElement("img");
 	elem.src = imageFile;
 	elem.setAttribute("height", "42");
@@ -428,7 +429,9 @@ function mouseover(d, i) {
 	document.getElementById("sidebar").appendChild(elem);
 		
 	}
-	window.alert("name" + imageFile);
+	catch(e){
+	window.alert("no image");
+	}	
 	}
 	
 function mouseout() {
