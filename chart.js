@@ -419,13 +419,16 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image
-	if imageExists(imageFile){
-	var elem = document.createElement("img");
+	try {
+    	var elem = document.createElement("img");
 	elem.src = imageFile;
 	elem.setAttribute("height", "42");
 	elem.setAttribute("width", "42");
 	
 	document.getElementById("sidebar").appendChild(elem);
+	}
+	catch (error) {
+	break;
 	}
 	}
 	
