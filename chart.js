@@ -419,6 +419,7 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image
+	if (imageFile){
 	var elem = document.createElement("img");
 	elem.src = imageFile;
 	elem.setAttribute("height", "42");
@@ -426,7 +427,8 @@ function mouseover(d, i) {
 	
 	document.getElementById("sidebar").appendChild(elem);
 	}
-
+	}
+	
 function mouseout() {
 	// no more tooltips
 		var mosie = d3.select(this);
