@@ -39,7 +39,11 @@ li {
     left: 650px;
     width: 272px;
 }
-
+/* Sidebar */
+#sidebar {
+    left: px;
+    width: px;
+}
 /*  Public or private funds view */
 
 #public-or-private-money {
