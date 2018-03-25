@@ -29,6 +29,13 @@ li {
 #view-party-type, #view-donor-type, #view-source-type, #view-donation-amount {
     display: none;
 }
+/* Sidebar */
+#sidebar {
+    position:fixed;
+    left: 1100px;
+    width: 500px;
+    border: 1px solid;
+}
 
 /* View containers */
 #initial-content, #view-source-type {
@@ -39,11 +46,7 @@ li {
     left: 650px;
     width: 272px;
 }
-/* Sidebar */
-#sidebar {
-    left: px;
-    width: px;
-}
+
 /*  Public or private funds view */
 
 #public-or-private-money {
