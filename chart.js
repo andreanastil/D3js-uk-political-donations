@@ -426,6 +426,7 @@ function mouseover(d, i) {
 	elem.setAttribute("width", "42");
 	
 	document.getElementById("sidebar").appendChild(elem);
+		console.log(imageFile);
 	}
 	}
 	
