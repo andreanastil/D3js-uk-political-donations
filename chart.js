@@ -428,7 +428,6 @@ function mouseover(d, i) {
 	document.getElementById("sidebar").appendChild(elem);
 	}
 	catch (error) {
-	break;
 	}
 	}
 	
