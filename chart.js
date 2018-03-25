@@ -5,6 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+var idCount;
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -418,14 +419,17 @@ function mouseover(d, i) {
 	
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
-	//place image
+	//place image 
 	if (imageFile.naturalHeight + imageFile.naturalWidth !== 0){
-    	var elem = document.createElement("img");
-	elem.src = imageFile;
-	elem.setAttribute("height", "42");
-	elem.setAttribute("width", "42");
-	
-	document.getElementById("sidebar").appendChild(elem);
+		
+			var elem = document.createElement("img");
+// 			img.id = idCount;
+// 			idCount = idCount+1;	
+			elem.src = imageFile;
+			elem.setAttribute("height", "42");
+			elem.setAttribute("width", "42");
+
+			document.getElementById("sidebar").appendChild(elem);
 	}	
 	}
 	
