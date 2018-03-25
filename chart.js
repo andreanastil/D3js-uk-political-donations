@@ -419,7 +419,7 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image
-	if (imageFile.naturalHeight + imageFile.naturalWidth === 0){
+	if (imageFile.naturalHeight + imageFile.naturalWidth !== 0){
     	var elem = document.createElement("img");
 	elem.src = imageFile;
 	elem.setAttribute("height", "42");
