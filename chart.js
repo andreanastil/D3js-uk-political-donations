@@ -419,18 +419,13 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image
-	try{
-	imageFile.onload();
+	if (imageFile.naturalHeight + imageFile.naturalWidth === 0){
     	var elem = document.createElement("img");
 	elem.src = imageFile;
 	elem.setAttribute("height", "42");
 	elem.setAttribute("width", "42");
 	
 	document.getElementById("sidebar").appendChild(elem);
-		
-	}
-	catch(e){
-	window.alert("no image");
 	}	
 	}
 	
