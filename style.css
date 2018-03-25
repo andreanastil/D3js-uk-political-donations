@@ -33,8 +33,7 @@ li {
 #sidebar {
     position:fixed;
     left: 1100px;
-    width: 300px;
-    border: 1px solid;
+    width: 336px;
 }
 
 /* View containers */
