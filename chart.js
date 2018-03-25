@@ -428,7 +428,7 @@ function mouseover(d, i) {
 	document.getElementById("sidebar").appendChild(elem);
 		
 	}
-	windows.alert("name" + imageFile);
+	window.alert("name" + imageFile);
 	}
 	
 function mouseout() {
