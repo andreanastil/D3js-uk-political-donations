@@ -5,7 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-var idCount;
+var names[];
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -424,16 +424,17 @@ function mouseover(d, i) {
 	http.open('HEAD', imageFile, false);
 	http.send();
 	if (http.status != 404){
-	//if (imageFile.naturalHeight + imageFile.naturalWidth !== 0){
+		if ((names.indexOf(donor) > -1)==false) {
 		
-			var elem = document.createElement("img");
-// 			img.id = idCount;
-// 			idCount = idCount+1;	
-			elem.src = imageFile;
-			elem.setAttribute("height", "42");
-			elem.setAttribute("width", "42");
+		var elem = document.createElement("img");
+// 		img.id = idCount;
+// 		idCount = idCount+1;	
+		elem.src = imageFile;
+		elem.setAttribute("height", "42");
+		elem.setAttribute("width", "42");
 
-			document.getElementById("sidebar").appendChild(elem);
+		document.getElementById("sidebar").appendChild(elem);
+		names.push(donor);	
 	}	
 	}
 	
