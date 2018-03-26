@@ -435,8 +435,9 @@ function mouseover(d, i) {
 
 		document.getElementById("sidebar").appendChild(elem);
 		names.push(donor);	
+		}
 	}	
-	}
+}
 	
 function mouseout() {
 	// no more tooltips
