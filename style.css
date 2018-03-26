@@ -36,7 +36,7 @@ li {
     width: 336px;
 }
 /*Second Button*/
-.myButton{
+#myButton{
     position: absolute;
     left: 0px;
     width: 100px;
