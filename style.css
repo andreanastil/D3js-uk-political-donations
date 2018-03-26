@@ -35,7 +35,16 @@ li {
     left: 1100px;
     width: 336px;
 }
-
+/*Second Button*/
+.myButton{
+    position: absolute;
+    left: 0px;
+    width: 100px;
+    background-color : green;
+    border-radius: 50%;
+    
+    
+}
 /* View containers */
 #initial-content, #view-source-type {
     left: 650px;
