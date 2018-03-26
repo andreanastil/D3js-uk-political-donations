@@ -5,7 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-var names[];
+var names = [];
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
