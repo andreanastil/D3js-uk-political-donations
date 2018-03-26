@@ -420,7 +420,11 @@ function mouseover(d, i) {
 	this.style.cursor="hand";
 	responsiveVoice.speak(donor + ' £' + amount);
 	//place image 
-	if (imageFile.naturalHeight + imageFile.naturalWidth !== 0){
+	var http = new XMLHttpRequest();
+	http.open('HEAD', imageFile, false);
+	http.send();
+	if (http.status != 404){
+	//if (imageFile.naturalHeight + imageFile.naturalWidth !== 0){
 		
 			var elem = document.createElement("img");
 // 			img.id = idCount;
