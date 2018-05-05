@@ -150,6 +150,8 @@
     
 
     $(document).ready(function() {
+          startpie();
+      entitydisplay();    
     d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
       return transition(id);
