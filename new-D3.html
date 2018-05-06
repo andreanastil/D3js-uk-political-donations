@@ -6,22 +6,27 @@
 	<script src="https://d3js.org/d3.v3.min.js"></script>
 	<link rel="stylesheet" href="style2.css">
 	<meta charset="utf-8">
+
+	<script type="text/javascript">
+	var button_sound = new Audio("else/coin-drop-4.mp3");	
+	</script>
 </head>
 <body>
-
 
  <header role="banner" id="title">
         <h1>A Donut Pie of Donutions</h1>
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">Split by source</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source" onmousedown="button_sound.play()">Split by source</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-party"onmousedown="button_sound.play()">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount">Split by amount of donation</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-public"onmousedown="button_sound.play()">The public's purse</a>
+            </li>            
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount" onmousedown="button_sound.play()">Split by amount of donation</a>
             </li>
-            <li><a href="index.html" role="button" class="pure-button switch" id="previous-look">Previous View</a>
+            <li><a href="index.html" role="button" class="pure-button switch" id="previous-look" onmousedown="button_sound.play()">Previous View</a>
             </li>
         </ul>
     </nav>
