@@ -84,19 +84,19 @@
           var data = d3.nest()
           .key(function(d) {
             if (d.amount <25000) {
-              return "Donations up to 25k:";
+              return "Donations up to 25k";
             }  
             else if(d.amount<50000){
-              return "Donations 25-50k:";
+              return "Donations 25-50k";
             }  
             else if(d.amount<100000){
-              return "Donations 50k-100k:";
+              return "Donations 50k-100k";
             }
             else if(d.amount<500000){
-              return "Donations 100k-500k:";
+              return "Donations 100k-500k";
             }
             else {
-              return "Donations over 500k:";
+              return "Donations over 500k";
             }  
           })
           .rollup(function(d) {
@@ -149,7 +149,7 @@
             .style("font-weight", "bold")
             .attr("class","label")
             .style("fill", function(d,i){return "black";})
-            .text( d.data.key +" £" +d.data.values);
+            .text( d.data.key +": £" +d.data.values);
 
           d3.select(this)
           .attr("stroke", "white")
