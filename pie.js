@@ -6,6 +6,7 @@
       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
     var percentageFormat = d3.format("%");
     var arc, pie, svg, tots;
+    var sound = new Audio("else/button-46.mp3");
     function startpie(){
      arc = d3.svg.arc()
       .outerRadius(radius - 30)
@@ -77,6 +78,38 @@
 
           });
     }
+
+    function publicdisplay(){
+      d3.csv("data/7500up.csv", function( data) {  
+          var data = d3.nest()
+          .key(function(d) {
+            if (d.entity=='pub') {
+            return 'Public Donations:';
+            }
+            else {
+              return'Private Donations:';
+            }
+          
+          })
+          .rollup(function(d) {
+            return d3.sum(d, function(g) {
+              return g.amount;
+            });
+          }).entries(data);
+          
+          tots = d3.sum(data, function(d) { 
+            return d.values; 
+            });
+
+          data.forEach(function(d) {
+                d.percentage = d.values  / tots;
+            });
+
+          return myPie(data);
+
+          });
+
+    }
     
     function amountdisplay(){
 
@@ -84,19 +117,19 @@
           var data = d3.nest()
           .key(function(d) {
             if (d.amount <25000) {
-              return "Donations up to 25k";
+              return "Donations up to 25k:";
             }  
             else if(d.amount<50000){
-              return "Donations 25-50k";
+              return "Donations 25-50k:";
             }  
             else if(d.amount<100000){
-              return "Donations 50k-100k";
+              return "Donations 50k-100k:";
             }
             else if(d.amount<500000){
-              return "Donations 100k-500k";
+              return "Donations 100k-500k:";
             }
             else {
-              return "Donations over 500k";
+              return "Donations over 500k:";
             }  
           })
           .rollup(function(d) {
@@ -149,11 +182,12 @@
             .style("font-weight", "bold")
             .attr("class","label")
             .style("fill", function(d,i){return "black";})
-            .text( d.data.key +": £" +d.data.values);
+            .text( d.data.key +" £" +d.data.values);
 
           d3.select(this)
           .attr("stroke", "white")
-          .style("transform", "scale(1.05)");        
+          .style("transform", "scale(1.05)");  
+          sound.play();      
       })  
       .on("mouseout", function(d) {
         div.style("display", "none");
@@ -184,6 +218,13 @@
         startpie();
         return partydisplay();
       }
+      if (name ==="group-by-public") {
+        //$("#initial-content").fadeOut(250);
+        $("#partypie").fadeOut(1000);
+        $("#donorpie").fadeOut(250);
+        startpie();
+        return publicdisplay();
+      }      
       if (name === "group-by-amount") {
         //$("#initial-content").fadeOut(250);
         $("#partypie").fadeOut(250);
