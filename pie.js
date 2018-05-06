@@ -1,15 +1,15 @@
-    var width = 1100,
-      height = 500,
+    var width = 900,
+      height = 600,
       radius = Math.min(width, height) / 2;
-
+    var div = d3.select("body").append("div").attr("class", "toolTip");
     var color = d3.scale.ordinal()
       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-      var arc, pie, svg;
+    var percentageFormat = d3.format("%");
+    var arc, pie, svg, tots;
     function startpie(){
      arc = d3.svg.arc()
-      .outerRadius(radius - 10)
-      .innerRadius(radius - 120);
+      .outerRadius(radius - 30)
+      .innerRadius(radius - 130);
 
      pie = d3.layout.pie()
       .sort(null)
@@ -21,7 +21,7 @@
       .attr("width", width)
       .attr("height", height)
       .append("g")
-      .attr("transform", "translate(" + width /1.45 + "," + height / 2 + ")");
+      .attr("transform", "translate(" + width /1.55 + "," + height / 2 + ")");
      } 
 
     // d3.csv("data/7500up.csv", function(error, data) {
@@ -39,6 +39,15 @@
             return g.amount;
           });
         }).entries(data);
+
+        tots = d3.sum(data, function(d) { 
+            return d.values; 
+            });
+
+          data.forEach(function(d) {
+                d.percentage = d.values  / tots;
+            });
+
         return myPie(data);
         });
     }
@@ -48,7 +57,7 @@
           d3.csv("data/7500up.csv", function( data) {  
           var data = d3.nest()
           .key(function(d) {
-            return d.entity;
+            return d.entityname;
           })
           .rollup(function(d) {
             return d3.sum(d, function(g) {
@@ -56,6 +65,14 @@
             });
           }).entries(data);
           
+          tots = d3.sum(data, function(d) { 
+            return d.values; 
+            });
+
+          data.forEach(function(d) {
+                d.percentage = d.values  / tots;
+            });
+
           return myPie(data);
 
           });
@@ -66,13 +83,35 @@
         d3.csv("data/7500up.csv", function( data) {  
           var data = d3.nest()
           .key(function(d) {
-            return d.entity;
+            if (d.amount <25000) {
+              return "Donations up to 25k:";
+            }  
+            else if(d.amount<50000){
+              return "Donations 25-50k:";
+            }  
+            else if(d.amount<100000){
+              return "Donations 50k-100k:";
+            }
+            else if(d.amount<500000){
+              return "Donations 100k-500k:";
+            }
+            else {
+              return "Donations over 500k:";
+            }  
           })
           .rollup(function(d) {
             return d3.sum(d, function(g) {
               return g.amount;
             });
           }).entries(data);
+
+          tots = d3.sum(data, function(d) { 
+            return d.values; 
+            });
+
+          data.forEach(function(d) {
+                d.percentage = d.values  / tots;
+            });          
           
           return myPie(data);
 
@@ -95,27 +134,34 @@
         .style("fill", function(d) {
 
           return color(d.data.key);
-        });
+        })
+      .on("mouseover", function(d) {
 
-      g.append("text")
-        .attr("transform", function(d) {
-          return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-          return d.data.key ;
-        })
-      g.append("text")
-        .attr("transform", function(d) {
-          return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("dy", "1.60em")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-          console.log(d.data);
-          return "£ " + d.data.values ;
-        });
+          div.style("left", d3.event.pageX+10+"px");
+          div.style("top", d3.event.pageY-25+"px");
+          div.style("display", "inline-block"); 
+          div.html(percentageFormat(d.data.percentage));
+          
+          svg.append("text")
+            .attr("dy", ".5em")
+            .style("text-anchor", "middle")
+            .style("font-size", 22)
+            .style("font-weight", "bold")
+            .attr("class","label")
+            .style("fill", function(d,i){return "black";})
+            .text( d.data.key +" £" +d.data.values);
+
+          d3.select(this)
+          .attr("stroke", "white")
+          .style("transform", "scale(1.05)");        
+      })  
+      .on("mouseout", function(d) {
+        div.style("display", "none");
+        svg.select(".label").remove();
+        d3.select(this)
+        .attr("stroke", "")
+        .style("transform", "scale(1)");
+      });
 
     }
 
@@ -124,7 +170,7 @@
     function transition (name) {
       d3.select("#pie").selectAll("*").remove();
       if (name === "group-by-money-source") {
-        $("#entitypie").fadeIn(1000);
+        $("#initial-content").fadeIn(1000);
         $("#partypie").fadeOut(250);
         $("#donorpie").fadeOut(250);
         startpie();
@@ -132,14 +178,14 @@
       }
 
       if (name ==="group-by-party") {
-        $("#entitypie").fadeOut(250);
+        //$("#initial-content").fadeOut(250);
         $("#partypie").fadeIn(1000);
         $("#donorpie").fadeOut(250);
         startpie();
         return partydisplay();
       }
-      if (name === "group-by-donor-type") {
-        $("#entitypie").fadeOut(250);
+      if (name === "group-by-amount") {
+        //$("#initial-content").fadeOut(250);
         $("#partypie").fadeOut(250);
         $("#donorpie").fadeIn(1000);
          //removes half of the pie :/
@@ -150,12 +196,14 @@
     
 
     $(document).ready(function() {
-          startpie();
-      entitydisplay();    
-    d3.selectAll(".switch").on("click", function(d) {
+      startpie();
+      entitydisplay(); 
+      d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
+
       return transition(id);
 
     });
+
 
 });
