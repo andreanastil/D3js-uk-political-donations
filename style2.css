@@ -21,23 +21,15 @@ li {
 
 /* 	Information boxes for different chart layouts */
 /* Positioning */
-#entitypie, #partypie, #donorpie{ 
-    position: absolute; 
+#initial-content, #partypie, #donorpie{ 
+    position: fixed;
+    left: 900px;
+    width: 400px; 
 }
 
 /* Initial appearance on load */
 #partypie, #donorpie{
     display: none;
-}
-
-/* View containers */
-#initial-content, #view-source-type {
-    left: 650px;
-    width: 400px;
-}
-#view-party-type {
-    left: 650px;
-    width: 272px;
 }
 
 /*  Public or private funds view */
@@ -175,4 +167,20 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 .pure-button-active, .pure-button:active {
     color: rgb(0, 120, 231);
     color: #fff
+}
+
+.toolTip {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
 }
