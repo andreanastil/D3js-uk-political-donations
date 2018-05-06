@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +9,7 @@
 </head>
 <body>
 
+
  <header role="banner" id="title">
         <h1>A Donut Pie of Donutions</h1>
     </header>
@@ -19,13 +19,24 @@
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount">Split by amount of donation</a>
+            </li>
+            <li><a href="index.html" role="button" class="pure-button switch" id="previous-look">Previous View</a>
             </li>
         </ul>
     </nav>
 
-<div id="pie"></div>
 
+<div id="initial-content">
+            <h2>Political donations and funding accepted by the Conservatives, Labour and Liberal Democrats between the 2010 general election and August 2013, when this data was collected.</h2>
+            <p>Each arc represents the total amount donated by a type of donor, the total amount received by a party during that period or the total amount of donations based on their range.</p>
+            <p>Hover over an arc to see further information.</p>
+            <p>Get an immediate overview of how party funding is shaped in Britain today by selecting one of the options at the top of the page.</p>
+            <p>Data is based on all reportable donations over &#163;7500.</p>
+            <p>Data source: <a href="http://www.electoralcommission.org.uk/">The Electoral Commission.</a>
+            </p>
+        </div>
+<div id="pie"></div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
